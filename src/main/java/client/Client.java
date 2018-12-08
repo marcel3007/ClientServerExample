@@ -1,24 +1,44 @@
 package client;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
+/**
+ * Represents a client
+ *
+ * @author Viktoriia Sulimenko, Marcel Waldau
+ */
 public class Client implements Runnable {
-
+    /**
+     * IP of the server
+     */
     private String ip;
+    /**
+     * Port of the server
+     */
     private int port;
+
+    /**
+     * Date
+     */
     private String date;
 
     Client(String ip, int port, String date) {
+        if (date == null)
+            throw new IllegalArgumentException("date is null");
+        if (date.isEmpty())
+            throw new IllegalArgumentException("date is empty");
+
         this.ip = ip;
         this.port = port;
         this.date = date;
     }
 
-
+    /**
+     * Sends a date String to the server and waits for the result message
+     */
     @Override
     public void run() {
         Socket clientSocket = null;
