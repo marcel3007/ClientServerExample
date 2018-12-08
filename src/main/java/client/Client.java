@@ -41,12 +41,12 @@ public class Client implements Runnable {
      */
     @Override
     public void run() {
-        Socket clientSocket = null;
+        Socket server = null;
         try {
-            clientSocket = new Socket(ip, port);
+            server = new Socket(ip, port);
 
-            ObjectOutputStream oos = new ObjectOutputStream(clientSocket.getOutputStream());
-            ObjectInputStream ois = new ObjectInputStream(clientSocket.getInputStream());
+            ObjectOutputStream oos = new ObjectOutputStream(server.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(server.getInputStream());
 
             oos.writeObject(date);
 
@@ -58,9 +58,9 @@ public class Client implements Runnable {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error while connecting to server: " + e.getMessage());
         } finally {
-            if (clientSocket != null) {
+            if (server != null) {
                 try {
-                    clientSocket.close();
+                    server.close();
                 } catch (IOException e) {
                     System.out.println("Error while closing the socket: " + e.getMessage());
                 }

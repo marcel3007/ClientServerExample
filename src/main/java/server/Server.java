@@ -43,7 +43,7 @@ public class Server implements Runnable {
 
                 System.out.println(Thread.currentThread().getName() + ": Server waiting / accepting ...");
                 client = serverSocket.accept();
-                System.out.println(Thread.currentThread().getName() + ": new client (" + client.getLocalSocketAddress() + ") request received, start new workerThread");
+                System.out.println(Thread.currentThread().getName() + ": new client (" + client.getInetAddress() + ":" + client.getPort() + ") request received, start new workerThread");
 
                 new Thread(new Worker(client), "Worker").start();
             }
