@@ -1,4 +1,6 @@
-package server;
+package view;
+
+import model.Server;
 
 /**
  * Server Main Program

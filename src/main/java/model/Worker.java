@@ -1,6 +1,6 @@
-package server;
+package model;
 
-import csv.TempController;
+import controller.TempController;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -10,28 +10,28 @@ import java.net.Socket;
 /**
  * Worker runnable for the server
  * <p>
- * The worker runnable is created and executed after the server has accepted a new client connection
+ * The worker runnable is created and executed after the server has accepted a new view connection
  *
  * @author Viktoriia Sulimenko, Marcel Waldau
  */
 public class Worker implements Runnable {
 
     /**
-     * Socket to client
+     * Socket to view
      */
     private final Socket client;
 
     /**
      * Creates a new Worker runnable
      *
-     * @param client the socket of the client
+     * @param client the socket of the view
      */
     Worker(Socket client) {
         this.client = client;
     }
 
     /**
-     * The run method creates a new TempController and tries to get the data to a specific date, which is received from the client
+     * The run method creates a new TempController and tries to get the data to a specific date, which is received from the view
      */
     @Override
     public void run() {
@@ -47,7 +47,7 @@ public class Worker implements Runnable {
             String date = (String) ois.readObject();
             System.out.println(Thread.currentThread().getName() + ": From " + client.getInetAddress() + ":" + client.getPort() + " received: " + date);
 
-            controller = new TempController("src/main/resources/values.csv");
+            controller = new TempController("src/main/resources/values.model");
 
             response = controller.get(date);
 

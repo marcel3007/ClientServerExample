@@ -1,4 +1,6 @@
-package client;
+package view;
+
+import model.Client;
 
 /**
  * Client Main Program
@@ -28,7 +30,7 @@ public class ClientMain {
         Client client = new Client(SERVER_IP, SERVER_PORT, "2018-12-07");
         new Thread(client, "ClientThread-1").start();
 
-        Client client2 = new Client(SERVER_IP, SERVER_PORT, "2018-12-06");
+        /*Client client2 = new Client(SERVER_IP, SERVER_PORT, "2018-12-06");
         new Thread(client2, "ClientThread-2").start();
 
         Client client3 = new Client(SERVER_IP, SERVER_PORT, "2018-12-05");
@@ -49,7 +51,7 @@ public class ClientMain {
         // no values available
         Client client_noValues = new Client(SERVER_IP, SERVER_PORT, "2018-12-31");
         new Thread(client_noValues, "ClientThread-8").start();
-
+*/
 
     }
 

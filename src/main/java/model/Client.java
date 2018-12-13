@@ -1,4 +1,4 @@
-package client;
+package model;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -6,7 +6,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 /**
- * Represents a client
+ * Represents a view
  *
  * @author Viktoriia Sulimenko, Marcel Waldau
  */

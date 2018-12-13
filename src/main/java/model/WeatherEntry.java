@@ -1,4 +1,4 @@
-package csv;
+package model;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -11,7 +11,7 @@ import java.util.Map;
  *
  * @author Viktoriia Sulimenko, Marcel Waldau
  */
-public class DateEntry {
+public class WeatherEntry {
 
     /**
      * Date of the entry
@@ -26,11 +26,11 @@ public class DateEntry {
     private Map<Integer, Double> values;
 
     /**
-     * Creates a new DateEntry
+     * Creates a new WeatherEntry
      *
-     * @param localDate the date of the DateEntry
+     * @param localDate the date of the WeatherEntry
      */
-    DateEntry(LocalDate localDate) {
+    public WeatherEntry(LocalDate localDate) {
         this.localDate = localDate;
         values = new HashMap<>();
     }
@@ -41,7 +41,7 @@ public class DateEntry {
      * @param hour  Hour of the day
      * @param value Temperature value of the hour
      */
-    void add(int hour, double value) {
+    public void add(int hour, double value) {
         values.put(hour, value);
     }
 

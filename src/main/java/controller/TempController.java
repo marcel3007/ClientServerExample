@@ -1,7 +1,8 @@
-package csv;
+package controller;
 
 
 import com.opencsv.CSVReader;
+import model.WeatherEntry;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,16 +19,16 @@ import java.util.Map;
 public class TempController {
 
     /**
-     * A Map of all date entries
+     * A Map of all weather entries
      * key: a date
-     * value: DateEntry to the specific date
+     * value: WeatherEntry to the specific date
      */
-    private Map<LocalDate, DateEntry> values;
+    private Map<LocalDate, WeatherEntry> values;
 
     /**
-     * The constructor creates a new map of DateEntry to a Date and parse a CSV File for entries. If entries are avaiable, the entries will be added to the values map
+     * The constructor creates a new map of WeatherEntry to a Date and parse a CSV File for entries. If entries are avaiable, the entries will be added to the values map
      *
-     * @param file csv file location
+     * @param file model file location
      */
     public TempController(String file) {
         values = new HashMap<>();
@@ -52,8 +53,8 @@ public class TempController {
     }
 
     /**
-     * Creates a new DateEntry from a CSV Row and adds this entry to the map
-     * If a DateEntry allready exists, the new Entry will be added in the existing entry
+     * Creates a new WeatherEntry from a CSV Row and adds this entry to the map
+     * If a WeatherEntry allready exists, the new Entry will be added in the existing entry
      *
      * @param date  date of the entry
      * @param time  time of the entry
@@ -69,7 +70,7 @@ public class TempController {
         if (values.containsKey(localDate)) {
             values.get(localDate).add(hour, temperature);
         } else {
-            DateEntry entry = new DateEntry(localDate);
+            WeatherEntry entry = new WeatherEntry(localDate);
             entry.add(hour, temperature);
             values.put(localDate, entry);
         }
@@ -77,7 +78,7 @@ public class TempController {
     }
 
     /**
-     * Get an DateEntry for a specific date and returns all the data as String
+     * Get an WeatherEntry for a specific date and returns all the data as String
      *
      * @param dateString a specific date
      * @return the data to this date
